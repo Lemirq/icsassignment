@@ -20,9 +20,9 @@ public class SalesAssociate extends Employee {
         this.hourlyRate = hourlyRate;
     }
 
-    @Override
-    public void pay() {
-        System.out.println("Sales Associate " + this.getFirstName() + " " + this.getLastName() + " has been paid.");
+    public void pay(int hoursWorked) {
+        System.out.println("Sales Associate " + this.getFirstName() + " " + this.getLastName() + " has been paid $"
+                + (this.hourlyRate * hoursWorked));
     }
 
     @Override

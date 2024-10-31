@@ -21,8 +21,9 @@ public class Employee {
         this.employeeNumber = employeeNumber;
     }
 
-    public void pay() {
-        System.out.println("Employee " + this.firstName + " " + this.lastName + " has been paid.");
+    public void pay(int hoursWorked) {
+        System.out.println("Employee " + this.firstName + " " + this.lastName + " has been paid, they worked "
+                + hoursWorked + " hours");
     }
 
     @Override

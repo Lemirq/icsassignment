@@ -19,9 +19,10 @@ public class Manager extends Employee {
         this.yearlySalary = yearlySalary;
     }
 
-    @Override
-    public void pay() {
-        System.out.println("Manager " + this.getFirstName() + " " + this.getLastName() + " has been paid.");
+    public void pay(int weeksWorked) {
+        // there are 8,765.82 hours in a year
+        System.out.println("Manager " + this.getFirstName() + " " + this.getLastName() + " has been paid $"
+                + (this.yearlySalary / 52 * weeksWorked));
     }
 
     @Override
