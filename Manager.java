@@ -13,21 +13,47 @@ package UnrealComputer;
 
 public class Manager extends Employee {
     private double yearlySalary;
+    private String firstName;
+    private String lastName;
+    private int employeeNumber;
+    private double moneyEarned;
 
     public Manager(String firstName, String lastName, int employeeNumber, double yearlySalary) {
-        super(firstName, lastName, employeeNumber);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.employeeNumber = employeeNumber;
         this.yearlySalary = yearlySalary;
     }
 
-    public void pay(int weeksWorked) {
+    public void pay(int weeksWorked, boolean isHourly) {
         // there are 8,765.82 hours in a year
-        System.out.println("Manager " + this.getFirstName() + " " + this.getLastName() + " has been paid $"
-                + (this.yearlySalary / 52 * weeksWorked));
+        if (!isHourly) {
+            double earned = PayrollSystem.roundToTwo(this.yearlySalary / 52 * weeksWorked);
+            System.out
+                    .println("Manager " + this.getFirstName() + " " + this.getLastName() + " has been paid $" + earned);
+            moneyEarned += earned;
+        }
     }
 
     @Override
     public String toString() {
-        return "Manager " + this.getFirstName() + " " + this.getLastName() + " (" + this.getEmployeeNumber() + ")";
+        return "Manager " + this.getFirstName() + " " + this.getLastName() + " (" + this.getEmployeeNumber()
+                + ")";
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getEmployeeNumber() {
+        return employeeNumber;
+    }
+
+    public double getEarnings() {
+        return moneyEarned;
+    }
 }

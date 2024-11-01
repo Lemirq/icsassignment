@@ -14,20 +14,46 @@ package UnrealComputer;
 
 public class SalesAssociate extends Employee {
     private double hourlyRate;
+    private int employeeNumber;
+    String firstName, lastName;
+    private double moneyEarned;
 
     public SalesAssociate(String firstName, String lastName, int employeeNumber, double hourlyRate) {
-        super(firstName, lastName, employeeNumber);
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.employeeNumber = employeeNumber;
         this.hourlyRate = hourlyRate;
     }
 
-    public void pay(int hoursWorked) {
-        System.out.println("Sales Associate " + this.getFirstName() + " " + this.getLastName() + " has been paid $"
-                + (this.hourlyRate * hoursWorked));
+    public void pay(int hoursWorked, boolean isHourly) {
+        if (isHourly) {
+            double earned = PayrollSystem.roundToTwo(this.hourlyRate * hoursWorked);
+            System.out.println("Sales Associate " + this.getFirstName() + " " + this.getLastName() + " has been paid $"
+                    + earned);
+            moneyEarned += earned;
+        }
     }
 
     @Override
     public String toString() {
         return "Sales Associate " + this.getFirstName() + " " + this.getLastName() + " (" + this.getEmployeeNumber()
-                + ")";
+                + ") | They earned " + moneyEarned + " in total";
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getEmployeeNumber() {
+        return employeeNumber;
+    }
+
+    public double getEarnings() {
+        return moneyEarned;
     }
 }

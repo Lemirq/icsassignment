@@ -10,36 +10,17 @@ package UnrealComputer;
 // employee number.
 // You can pay() an employee. Managers and associates are paid differently.
 
-public class Employee {
-    private String firstName;
-    private String lastName;
-    private int employeeNumber;
-
-    public Employee(String firstName, String lastName, int employeeNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.employeeNumber = employeeNumber;
-    }
-
-    public void pay(int hoursWorked) {
-        System.out.println("Employee " + this.firstName + " " + this.lastName + " has been paid, they worked "
-                + hoursWorked + " hours");
-    }
+abstract class Employee {
+    abstract void pay(int amount, boolean isHourly);
 
     @Override
-    public String toString() {
-        return "Employee " + this.firstName + " " + this.lastName + " (" + this.employeeNumber + ")";
-    }
+    public abstract String toString();
 
-    public String getFirstName() {
-        return firstName;
-    }
+    abstract public String getFirstName();
 
-    public String getLastName() {
-        return lastName;
-    }
+    abstract public String getLastName();
 
-    public int getEmployeeNumber() {
-        return employeeNumber;
-    }
+    abstract public int getEmployeeNumber();
+
+    abstract public double getEarnings();
 }
